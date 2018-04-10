@@ -30,13 +30,14 @@ public class Polygon {
 		return new Polygon(c,x,y,z);
 	}
 	
-	public void mutatePolygon(Parameters parameter) {
+	public void mutatePolygon(Parameters parameter, double probability) {
 		int maxDelta = ((parameter.width + parameter.height) / 2) / 2;
 		int halfDelta = maxDelta / 2 + 2;
 		int maxColorDelta = 100;
 		int halfMaxColorDelta = maxColorDelta / 2;
 		int colorMutation = random.nextInt(4);
 		
+		if(random.nextDouble() > probability) return;
 		
 		if(random.nextBoolean()) {
 			

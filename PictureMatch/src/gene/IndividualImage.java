@@ -25,6 +25,7 @@ public class IndividualImage{
 		// Express DNA
 		draw();
 	}
+	
 	public void draw() {
 		this.img = new BufferedImage(parameter.width,parameter.height,BufferedImage.TYPE_INT_ARGB);
 		this.img.getGraphics().setColor(Color.BLACK);
@@ -33,6 +34,7 @@ public class IndividualImage{
 			polygon.draw(this.img.getGraphics());
 		}
 	}
+	
 	private Polygon randomPolygon(){
 		int pointNum = random.nextInt(parameter.polygonMax - 2) + 3;
 		int[] x = new int[pointNum];
@@ -69,7 +71,7 @@ public class IndividualImage{
 	
 	public void mutatePolygon() {
 		for(Polygon polygon : this.dna) {
-			polygon.mutatePolygon(this.parameter);
+			polygon.mutatePolygon(this.parameter,this.parameter.getProbability(0.001f, 0.01f));
 		}
 	}
 }
