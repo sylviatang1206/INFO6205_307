@@ -15,7 +15,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		Image img = ImageIO.read(new File("target.jpg"));
 		BufferedImage bi1 = (BufferedImage) img;
-		Parameters p = new Parameters(bi1.getWidth(),bi1.getHeight(),10,100,5,bi1,100);
+		Parameters p = new Parameters(bi1.getWidth(),bi1.getHeight(),20,100,5,bi1,100);
 		Population gen = new Population(p);
 //		gen.imageList.add(new IndividualImage(p));
 		// retrieve image
@@ -23,6 +23,11 @@ public class Main {
 //	    	gen.draw(bi2.getGraphics(), gen.selection());
 	    	File outputfile = new File("saved.png");
 		ImageIO.write(gen.selection().img, "png", outputfile);
+		gen.selection().mutatePolygon();
+		gen.selection().draw();
+		File outputfile1 = new File("saved1.png");
+		ImageIO.write(gen.selection().img, "png", outputfile1);
+		
 		for(int i = 0; i < gen.imageList.size(); i++) {
 			System.out.println(gen.imageList.get(i).fitness());
 		}

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class IndividualImage{
+	
 	private Parameters parameter;
 	private Random random;
 	public ArrayList<Polygon> dna;
@@ -22,23 +23,16 @@ public class IndividualImage{
 		}
 		
 		// Express DNA
+		draw();
+	}
+	public void draw() {
 		this.img = new BufferedImage(parameter.width,parameter.height,BufferedImage.TYPE_INT_ARGB);
 		this.img.getGraphics().setColor(Color.BLACK);
 		this.img.getGraphics().clearRect(0, 0, parameter.width, parameter.height);
 		for(Polygon polygon : dna) {
 			polygon.draw(this.img.getGraphics());
 		}
-		
 	}
-	
-//	public void draw(Graphics g) {
-//		g.setColor(Color.BLACK);
-//		g.clearRect(0, 0, parameter.width, parameter.height);
-//		for(Polygon polygon : dna) {
-//			polygon.draw(g);
-//		}
-//	}
-	
 	private Polygon randomPolygon(){
 		int pointNum = random.nextInt(parameter.polygonMax - 2) + 3;
 		int[] x = new int[pointNum];
@@ -71,5 +65,11 @@ public class IndividualImage{
 			}
 		}
 		return error;
+	}
+	
+	public void mutatePolygon() {
+		for(Polygon polygon : this.dna) {
+			polygon.mutatePolygon(this.parameter);
+		}
 	}
 }

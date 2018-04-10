@@ -1,6 +1,7 @@
 package gene;
 
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public class Parameters {
 	public int width;
@@ -20,5 +21,11 @@ public class Parameters {
 		this.targetImage = targetImage;
 		this.cutOff = cutOff;
 	}
+	
+	public float getProbability(float min, float max) {
+		Random random = new Random();
+		return min + random.nextFloat() * (max - min);
+	}
+	
 	
 }
