@@ -4,7 +4,14 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
-
+/*
+ * 3. a fitness function--this is essentially a measure of how good a candidate (organism) 
+ *    solution is for the problem you have chosen to solve;
+ *    
+ *    	a. The fitness function compares the image(DNA) generated with the target image.
+ *    	b. A cutoff in the fitness function is used to improve efficiency by avoiding comparing 
+ *    		RGB of every coordinates.
+ */
 public class IndividualImage{
 	
 	private Parameters parameter;
@@ -71,7 +78,9 @@ public class IndividualImage{
 	
 	public void mutatePolygon() {
 		for(Polygon polygon : this.dna) {
-			polygon.mutatePolygon(this.parameter,this.parameter.getProbability(0.001f, 0.01f));
+			polygon.mutatePolygon(this.parameter,this.parameter.getProbability());
 		}
 	}
+	
+	
 }

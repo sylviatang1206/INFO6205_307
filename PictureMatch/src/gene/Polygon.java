@@ -4,6 +4,21 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
+/*
+ * 1. a genetic code (or use the four bases of DNA for simplicity) and 
+ *    a random generator/mutator of such codes;
+ *    
+ *		a. Each individual image (DNA) is consists of various of polygons (Gene)
+ *    	b. Each polygon is randomly generated with random size, color and position
+ * 
+ * 2. gene expression: how do individual genes code for particular traits 
+ * 	  --a symbol table using a hash function?
+ * 
+ * 		a. Each polygon(Gene) has a draw function which is a gene expression function
+ * 		b. The expression function converts the polygon with its color, size and position 
+ * 		   to graphic and then put into buffered image.
+ */ 
+
 public class Polygon {
 	private Color color;
 	private int[] c;
@@ -11,6 +26,7 @@ public class Polygon {
 	private int[] y;
 	private int z;
 	private Random random;
+	
 	
 	public Polygon(int[] color, int[] x, int[] y, int z) {
 		this.color = new Color(color[0],color[1],color[2],color[3]);

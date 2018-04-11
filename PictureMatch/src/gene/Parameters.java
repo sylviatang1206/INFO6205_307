@@ -22,9 +22,11 @@ public class Parameters {
 		this.cutOff = cutOff;
 	}
 	
-	public float getProbability(float min, float max) {
+	public float getProbability() {
+		float min = 0.001f;
+		float max = 0.5f;
 		Random random = new Random();
-		return min + random.nextFloat() * (max - min);
+		return max + random.nextFloat() * (max - min);
 	}
 	
 	
