@@ -19,8 +19,7 @@ public class Main {
 		
 		Population gen = new Population(p);
 		int count = 1;
-		while(count < 1500) {
-			
+		while(gen.getPQ().peek().fitness() > 3000) {
 			gen.evolution();
 			System.out.print("Now is the " + count + "th generation. And the best fitness is " +  gen.getPQ().peek().fitness()+ "\n");
 			count++;
@@ -46,8 +45,8 @@ public class Main {
 		
 		System.out.println("get(0): " + gen.imageList.get(0).fitness());
 		gen.imageList.get(0).draw();
-		System.out.println("get(0): " + gen.imageList.get(0).fitness());
-		gen.imageList.get(0).mutatePolygon();
+		System.out.println("get(0).copy: " + gen.copyImage(gen.imageList.get(0)).fitness());
+		
 		System.out.println("After mutation: " + gen.imageList.get(0).fitness());
 		gen.imageList.get(0).draw();
 		System.out.println("After draw: " + gen.imageList.get(0).fitness());

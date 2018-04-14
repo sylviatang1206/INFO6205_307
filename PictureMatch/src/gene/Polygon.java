@@ -40,6 +40,7 @@ public class Polygon {
 	public void draw(Graphics g) {
 		g.setColor(color);
 		g.fillPolygon(x, y, x.length);
+		
 	}
 	
 	public Polygon copy() {
@@ -54,7 +55,7 @@ public class Polygon {
 		int colorMutation = random.nextInt(4);
 		
 		if(random.nextDouble() > probability) return;
-		System.out.println("change occours");
+//		System.out.println("change occours");
 		if(random.nextBoolean()) {
 			
 			// mutate color
@@ -92,4 +93,47 @@ public class Polygon {
 		else if(val > max) return max;
 		else return val;
 	}
+	
+	public boolean checkIfHasThePoint(int x, int y) {
+		int j = this.x.length - 1;
+		boolean oddNodes = false;
+//		int zeroState = 0;
+		for(int k = 0; k < this.x.length; k++) {
+			int ptkx = this.x[k];
+			int ptky = this.y[k];
+			int ptjx = this.x[j];
+			int ptjy = this.y[j];
+			if((ptky > y) != (ptjy > y) && (x < (ptjx - ptkx) * (y - ptky) / (ptjy - ptky))) {
+				oddNodes = !oddNodes;
+//				if(ptky > ptjy) zeroState++;
+//				else zeroState--;
+			}
+			j = k;
+		}
+		return oddNodes;
+	}
+	/*
+	 * int ptNum = polygon.Count();
+            if (ptNum < 3) {
+                return false;
+            }
+            int j = ptNum - 1;
+            bool oddNodes = false;
+            int zeroState = 0;
+            for (int k = 0; k < ptNum; k++) {
+                Point ptK = polygon[k];
+                Point ptJ = polygon[j];
+                if (((ptK.Y > pt.Y) != (ptJ.Y > pt.Y)) && (pt.X < (ptJ.X - ptK.X) * (pt.Y - ptK.Y) / (ptJ.Y - ptK.Y) + ptK.X)) {
+                    oddNodes = !oddNodes;
+                    if (ptK.Y > ptJ.Y) {
+                        zeroState++;
+                    }
+                    else {
+                        zeroState--;
+                    }
+                }
+                j = k;
+            }
+            return noneZeroMode?zeroState!=0:oddNodes;
+	 */
 }

@@ -24,7 +24,7 @@ public class Parameters {
 	
 	public float getProbability() {
 		float min = 0.001f;
-		float max = 0.01f;
+		float max = 0.02f;
 		Random random = new Random();
 		return min + random.nextFloat() * (max - min);
 	}

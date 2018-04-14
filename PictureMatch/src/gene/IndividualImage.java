@@ -36,12 +36,14 @@ public class IndividualImage{
 	}
 	
 	public void draw() {
-		this.img = new BufferedImage(parameter.width,parameter.height,BufferedImage.TYPE_INT_ARGB);
-		this.img.getGraphics().setColor(Color.BLACK);
+//		long a = System.currentTimeMillis();
+		if(this.img == null) this.img = new BufferedImage(parameter.width,parameter.height,BufferedImage.TYPE_INT_ARGB);
+		//this.img.getGraphics().setColor(Color.BLACK);
 		this.img.getGraphics().clearRect(0, 0, parameter.width, parameter.height);
 		for(Polygon polygon : dna) {
 			polygon.draw(this.img.getGraphics());
 		}
+//		System.out.println("draw: " + (System.currentTimeMillis() - a));
 	}
 	
 	private Polygon randomPolygon(){
@@ -61,6 +63,7 @@ public class IndividualImage{
 	}
 	
 	public double fitness() {
+//		long a = System.currentTimeMillis();
 		BufferedImage bi1 = parameter.targetImage;
 		int cutOff = parameter.cutOff;
 		
@@ -75,6 +78,7 @@ public class IndividualImage{
 //				error += Math.abs(((rgb1 >>> 24) & 0xFF) - ((rgb2 >>> 24) & 0xFF)); // alpha
 			}
 		}
+//		System.out.println("fitness: " + (System.currentTimeMillis() - a));
 		return error;
 	}
 	
@@ -96,5 +100,22 @@ public class IndividualImage{
 		draw();
 	}
 	
+	public static IndividualImage mutateAndCreate(IndividualImage img) {
+		IndividualImage copy = new IndividualImage(img.parameter,false);
+		
+		for(int i = 0; i < img.dna.size(); i++) {
+			if(img.random.nextDouble() < 0.01) copy.dna.add(img.randomPolygon());
+			else copy.dna.add(img.dna.get(i));
+		}
+		copy.draw();
+		return copy;
+	}
+	
+	public IndividualImage copyImage(IndividualImage image) {
+		IndividualImage copy = new IndividualImage(this.parameter,false);
+		for(int i = 0; i < copy.dna.size(); i++) copy.dna.add(image.dna.get(i));
+		copy.draw();
+		return copy;
+	}
 	
 }

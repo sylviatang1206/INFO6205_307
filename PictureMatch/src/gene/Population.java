@@ -50,22 +50,29 @@ public class Population {
 			}
 		}
 		img.mutatePolygon();
-		
+//		img.draw();
 		return img;
 	}
 	
 	public void evolution() {
+//		long a = System.currentTimeMillis();
 		ArrayList<IndividualImage> childrenList = new ArrayList<>();
 		PriorityQueue<IndividualImage> pq = getPQ();
 		IndividualImage best = pq.peek();
 		IndividualImage first = pq.poll();
 		IndividualImage second = pq.poll();
 		childrenList.add(best);
-		
+//		while(childrenList.size() < this.imageList.size() / 2) {
+//			childrenList.add(IndividualImage.mutateAndCreate(best));
+//		}
 		while (childrenList.size() < this.imageList.size()) {
-			childrenList.add(crossOver(first,second));
+			IndividualImage child = crossOver(first,second);
+//			while(child.fitness() >= best.fitness()) child = crossOver(first,second);
+			childrenList.add(child);
 		}
+		
 		this.imageList = childrenList;
+//		System.out.println("evlution: " + (System.currentTimeMillis() - a));
 	}
 	
 	public IndividualImage selection() {
@@ -76,6 +83,17 @@ public class Population {
 			}
 		}
 		return getPQ().peek();
+	}
+	
+	public IndividualImage copyImage(IndividualImage image) {
+		IndividualImage copy = new IndividualImage(parameter,false);
+		ArrayList<Polygon> copyDNA = new ArrayList<>();
+		for(int i = 0; i < image.dna.size(); i++) {
+			copyDNA.add(image.dna.get(i));
+		}
+		copy.dna = copyDNA;
+		copy.draw();
+		return copy;
 	}
 	
 	
