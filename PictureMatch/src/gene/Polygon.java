@@ -54,7 +54,7 @@ public class Polygon {
 		int colorMutation = random.nextInt(4);
 		
 		if(random.nextDouble() > probability) return;
-		
+		System.out.println("change occours");
 		if(random.nextBoolean()) {
 			
 			// mutate color

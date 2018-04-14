@@ -19,18 +19,20 @@ public class IndividualImage{
 	public ArrayList<Polygon> dna;
 	public BufferedImage img;
 	
-	public IndividualImage(Parameters parameter) {
+	public IndividualImage(Parameters parameter, boolean random) {
 		this.parameter = parameter;
 		this.random = new Random();
 		this.dna = new ArrayList<Polygon>();
-		
-		// Generate DNA
-		for(int i = 0; i < parameter.geneNum; i++) {
-			this.dna.add(randomPolygon());
+		if(random) {
+			// Generate DNA
+			for(int i = 0; i < parameter.geneNum; i++) {
+				this.dna.add(randomPolygon());
+			}
+			
+			// Express DNA
+			draw();
 		}
 		
-		// Express DNA
-		draw();
 	}
 	
 	public void draw() {
@@ -77,9 +79,21 @@ public class IndividualImage{
 	}
 	
 	public void mutatePolygon() {
-		for(Polygon polygon : this.dna) {
-			polygon.mutatePolygon(this.parameter,this.parameter.getProbability());
+		int count = 0;
+		for(int i = 0; i < this.dna.size(); i++) {
+//			polygon.mutatePolygon(this.parameter,this.parameter.getProbability());
+			if(random.nextDouble() < 0.01) {
+				this.dna.remove(this.dna.get(i));
+				count++;
+//				this.dna.add(randomPolygon());
+//				polygon = randomPolygon();
+//				System.out.println("change");
+			}
 		}
+		for(int i = 0; i < count; i++) {
+			this.dna.add(randomPolygon());
+		}
+		draw();
 	}
 	
 	

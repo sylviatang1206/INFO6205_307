@@ -13,7 +13,7 @@ public class Population {
 		this.parameter = parameter;
 		this.imageList = new ArrayList<IndividualImage>();
 		for(int i = 0; i < parameter.populationNum; i++) {
-			this.imageList.add(new IndividualImage(parameter));
+			this.imageList.add(new IndividualImage(parameter,true));
 		}
 		this.random = new Random();
 	}
@@ -30,33 +30,40 @@ public class Population {
 //		return bestImage;
 //	}
 	
-	public IndividualImage crossOver() {
-		IndividualImage img = new IndividualImage(parameter);
-		img.dna.clear();
+	public IndividualImage crossOver(IndividualImage first, IndividualImage second) {
+		IndividualImage img = new IndividualImage(parameter,false);
+//		img.dna.clear();
 //		PriorityQueue<IndividualImage> pq = getPQ();
-		IndividualImage first = selection();
+//		IndividualImage first = selection();
 //		System.out.println("First Parent Image Fitness: " + first.fitness());
-		IndividualImage second = selection();
+//		IndividualImage second = selection();
 //		System.out.println("Second Parent Image Fitness: " + second.fitness());
 		for(int i = 0; i < this.parameter.geneNum; i++) {
 			if(this.random.nextDouble() > .5) {
 				Polygon polygon = first.dna.get(i);
-				polygon.mutatePolygon(this.parameter, this.parameter.getProbability());
+//				polygon.mutatePolygon(this.parameter, this.parameter.getProbability());
 				img.dna.add(polygon);
 			}else {
 				Polygon polygon = second.dna.get(i);
-				polygon.mutatePolygon(this.parameter, this.parameter.getProbability());
+//				polygon.mutatePolygon(this.parameter, this.parameter.getProbability());
 				img.dna.add(polygon);
 			}
 		}
+		img.mutatePolygon();
+		
 		return img;
 	}
 	
 	public void evolution() {
 		ArrayList<IndividualImage> childrenList = new ArrayList<>();
-		childrenList.add(getPQ().peek());
+		PriorityQueue<IndividualImage> pq = getPQ();
+		IndividualImage best = pq.peek();
+		IndividualImage first = pq.poll();
+		IndividualImage second = pq.poll();
+		childrenList.add(best);
+		
 		while (childrenList.size() < this.imageList.size()) {
-			childrenList.add(crossOver());
+			childrenList.add(crossOver(first,second));
 		}
 		this.imageList = childrenList;
 	}

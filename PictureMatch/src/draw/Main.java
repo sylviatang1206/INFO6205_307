@@ -18,11 +18,12 @@ public class Main {
 		Parameters p = new Parameters(bi1.getWidth(),bi1.getHeight(),20,100,3,bi1,2);
 		
 		Population gen = new Population(p);
-		int i = 1;
-		while(gen.getPQ().peek().fitness() > 20) {
-			System.out.print("Now is the " + i + "th generation. And the best fitness is " +  gen.getPQ().peek().fitness()+ "\n");
+		int count = 1;
+		while(count < 1500) {
+			
 			gen.evolution();
-			i++;
+			System.out.print("Now is the " + count + "th generation. And the best fitness is " +  gen.getPQ().peek().fitness()+ "\n");
+			count++;
 		}
 //		System.out.println(gen.imageList.size());
 //		gen.imageList.add(new IndividualImage(p));
@@ -38,11 +39,18 @@ public class Main {
 //		System.out.println(gen.imageList.size());
 		File outputfile1 = new File("saved1.png");
 		ImageIO.write(gen.getPQ().peek().img, "png", outputfile1);
-		System.out.println(gen.getPQ().peek().fitness());
-//		for(int i = 0; i < gen.imageList.size(); i++) {
-//			System.out.println(gen.imageList.get(i).fitness());
-//		}
+//		System.out.println(gen.getPQ().peek().fitness());
+		for(int i = 0; i < gen.imageList.size(); i++) {
+			System.out.println(gen.imageList.get(i).fitness());
+		}
 		
+		System.out.println("get(0): " + gen.imageList.get(0).fitness());
+		gen.imageList.get(0).draw();
+		System.out.println("get(0): " + gen.imageList.get(0).fitness());
+		gen.imageList.get(0).mutatePolygon();
+		System.out.println("After mutation: " + gen.imageList.get(0).fitness());
+		gen.imageList.get(0).draw();
+		System.out.println("After draw: " + gen.imageList.get(0).fitness());
 //		System.out.println(gen.crossOver().fitness());
 //		File outputfile2 = new File("saved2.png");
 //		ImageIO.write(gen.crossOver().img, "png", outputfile2);
