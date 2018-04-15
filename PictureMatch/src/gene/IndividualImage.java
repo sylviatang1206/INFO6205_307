@@ -36,14 +36,13 @@ public class IndividualImage{
 	}
 	
 	public void draw() {
-//		long a = System.currentTimeMillis();
 		if(this.img == null) this.img = new BufferedImage(parameter.width,parameter.height,BufferedImage.TYPE_INT_ARGB);
-		//this.img.getGraphics().setColor(Color.BLACK);
+		this.img.getGraphics().setColor(Color.BLACK);
 		this.img.getGraphics().clearRect(0, 0, parameter.width, parameter.height);
 		for(Polygon polygon : dna) {
 			polygon.draw(this.img.getGraphics());
 		}
-//		System.out.println("draw: " + (System.currentTimeMillis() - a));
+
 	}
 	
 	private Polygon randomPolygon(){
@@ -75,23 +74,19 @@ public class IndividualImage{
 				error += Math.abs((rgb1 & 0xFF) - (rgb2 & 0xFF)); // blue
 				error += Math.abs(((rgb1 >>> 8) & 0xFF) - ((rgb2 >>> 8) & 0xFF)); // green
 				error += Math.abs(((rgb1 >>> 16) & 0xFF) - ((rgb2 >>> 16) & 0xFF)); // red
-//				error += Math.abs(((rgb1 >>> 24) & 0xFF) - ((rgb2 >>> 24) & 0xFF)); // alpha
+
 			}
 		}
-//		System.out.println("fitness: " + (System.currentTimeMillis() - a));
+
 		return error;
 	}
 	
 	public void mutatePolygon() {
 		int count = 0;
 		for(int i = 0; i < this.dna.size(); i++) {
-//			polygon.mutatePolygon(this.parameter,this.parameter.getProbability());
-			if(random.nextDouble() < 0.01) {
+			if(random.nextDouble() < 0.1) {
 				this.dna.remove(this.dna.get(i));
 				count++;
-//				this.dna.add(randomPolygon());
-//				polygon = randomPolygon();
-//				System.out.println("change");
 			}
 		}
 		for(int i = 0; i < count; i++) {
@@ -104,18 +99,13 @@ public class IndividualImage{
 		IndividualImage copy = new IndividualImage(img.parameter,false);
 		
 		for(int i = 0; i < img.dna.size(); i++) {
-			if(img.random.nextDouble() < 0.01) copy.dna.add(img.randomPolygon());
+			if(img.random.nextDouble() < 0.1) copy.dna.add(img.randomPolygon());
 			else copy.dna.add(img.dna.get(i));
 		}
 		copy.draw();
 		return copy;
 	}
 	
-	public IndividualImage copyImage(IndividualImage image) {
-		IndividualImage copy = new IndividualImage(this.parameter,false);
-		for(int i = 0; i < copy.dna.size(); i++) copy.dna.add(image.dna.get(i));
-		copy.draw();
-		return copy;
-	}
+	
 	
 }

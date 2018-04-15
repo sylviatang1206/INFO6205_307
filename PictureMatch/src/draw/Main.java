@@ -4,59 +4,56 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
 import javax.imageio.ImageIO;
 
 import gene.Population;
+import gene.IndividualImage;
 import gene.Parameters;
 
 public class Main {
-
+	private final static Logger logger = Logger.getLogger("Genetic Algorithm");
+	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		Image img = ImageIO.read(new File("target3.jpg"));
+		Image img = ImageIO.read(new File("target1.jpg"));
 		BufferedImage bi1 = (BufferedImage) img;
+		IndividualImage[] rst = new IndividualImage[2];
 		Parameters p = new Parameters(bi1.getWidth(),bi1.getHeight(),20,100,3,bi1,2);
-		
+		FileHandler fileHandler = new FileHandler("log.txt");
+		SimpleFormatter sf = new SimpleFormatter();
+		fileHandler.setFormatter(sf);
+		logger.addHandler(fileHandler);
 		Population gen = new Population(p);
 		int count = 1;
-		while(gen.getPQ().peek().fitness() > 3000) {
+		rst[0] = gen.getPQ().peek();
+		double iniFitness = rst[0].fitness();
+		while(gen.getPQ().peek().fitness() > iniFitness * 0.55) {
 			gen.evolution();
-			System.out.print("Now is the " + count + "th generation. And the best fitness is " +  gen.getPQ().peek().fitness()+ "\n");
+			logging(count, gen.getPQ().peek());
 			count++;
 		}
-//		System.out.println(gen.imageList.size());
-//		gen.imageList.add(new IndividualImage(p));
-		// retrieve image
-//	    	BufferedImage bi2 = new BufferedImage(bi1.getWidth(),bi1.getHeight(),BufferedImage.TYPE_INT_ARGB);
-//	    	gen.draw(bi2.getGraphics(), gen.selection());
-//	    	File outputfile = new File("saved.png");
-//		ImageIO.write(gen.getPQ().peek().img, "png", outputfile);
-//		System.out.println(gen.imageList.size());
-//		System.out.println(gen.getPQ().peek().fitness());
-//		gen.getPQ().peek().mutatePolygon();
-//		gen.getPQ().peek().draw();
-//		System.out.println(gen.imageList.size());
-		File outputfile1 = new File("saved1.png");
-		ImageIO.write(gen.getPQ().peek().img, "png", outputfile1);
-//		System.out.println(gen.getPQ().peek().fitness());
-		for(int i = 0; i < gen.imageList.size(); i++) {
-			System.out.println(gen.imageList.get(i).fitness());
-		}
-		
-		System.out.println("get(0): " + gen.imageList.get(0).fitness());
-		gen.imageList.get(0).draw();
-		System.out.println("get(0).copy: " + gen.copyImage(gen.imageList.get(0)).fitness());
-		
-		System.out.println("After mutation: " + gen.imageList.get(0).fitness());
-		gen.imageList.get(0).draw();
-		System.out.println("After draw: " + gen.imageList.get(0).fitness());
-//		System.out.println(gen.crossOver().fitness());
-//		File outputfile2 = new File("saved2.png");
-//		ImageIO.write(gen.crossOver().img, "png", outputfile2);
-		
-		
-		
-		
+		rst[1] = gen.getPQ().peek();
+		File outputfile = new File("final.png");
+		ImageIO.write(gen.getPQ().peek().img, "png", outputfile);
+
 	}
+	
+	private static void logging(int count, IndividualImage img) throws IOException {
+		LogRecord lr = new LogRecord(Level.INFO, "Generation: " + count + ". Best Fitness: " + img.fitness() + ".");
+		logger.log(lr);
+		if(count % 50 == 0 || count == 1) {
+			String fileName = "Generation" + count + ".png";
+			File outputfile = new File(fileName);
+			ImageIO.write(img.img, "png", outputfile);
+		}
+	
+	}
+	
 
 }

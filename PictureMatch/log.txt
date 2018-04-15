@@ -1,0 +1,86 @@
+Apr 15, 2018 12:04:42 AM draw.Main logging
+INFO: Generation: 1. Best Fitness: 1008393.0.
+Apr 15, 2018 12:04:43 AM draw.Main logging
+INFO: Generation: 2. Best Fitness: 987085.0.
+Apr 15, 2018 12:04:43 AM draw.Main logging
+INFO: Generation: 3. Best Fitness: 945610.0.
+Apr 15, 2018 12:04:43 AM draw.Main logging
+INFO: Generation: 4. Best Fitness: 928605.0.
+Apr 15, 2018 12:04:43 AM draw.Main logging
+INFO: Generation: 5. Best Fitness: 903240.0.
+Apr 15, 2018 12:04:44 AM draw.Main logging
+INFO: Generation: 6. Best Fitness: 903240.0.
+Apr 15, 2018 12:04:44 AM draw.Main logging
+INFO: Generation: 7. Best Fitness: 902667.0.
+Apr 15, 2018 12:04:44 AM draw.Main logging
+INFO: Generation: 8. Best Fitness: 902051.0.
+Apr 15, 2018 12:04:44 AM draw.Main logging
+INFO: Generation: 9. Best Fitness: 898019.0.
+Apr 15, 2018 12:04:45 AM draw.Main logging
+INFO: Generation: 10. Best Fitness: 898019.0.
+Apr 15, 2018 12:04:45 AM draw.Main logging
+INFO: Generation: 11. Best Fitness: 898019.0.
+Apr 15, 2018 12:04:45 AM draw.Main logging
+INFO: Generation: 12. Best Fitness: 896917.0.
+Apr 15, 2018 12:04:45 AM draw.Main logging
+INFO: Generation: 13. Best Fitness: 864394.0.
+Apr 15, 2018 12:04:45 AM draw.Main logging
+INFO: Generation: 14. Best Fitness: 856177.0.
+Apr 15, 2018 12:04:46 AM draw.Main logging
+INFO: Generation: 15. Best Fitness: 844545.0.
+Apr 15, 2018 12:04:46 AM draw.Main logging
+INFO: Generation: 16. Best Fitness: 844545.0.
+Apr 15, 2018 12:04:46 AM draw.Main logging
+INFO: Generation: 17. Best Fitness: 844545.0.
+Apr 15, 2018 12:04:46 AM draw.Main logging
+INFO: Generation: 18. Best Fitness: 844545.0.
+Apr 15, 2018 12:04:46 AM draw.Main logging
+INFO: Generation: 19. Best Fitness: 844545.0.
+Apr 15, 2018 12:04:47 AM draw.Main logging
+INFO: Generation: 20. Best Fitness: 843506.0.
+Apr 15, 2018 12:04:47 AM draw.Main logging
+INFO: Generation: 21. Best Fitness: 843506.0.
+Apr 15, 2018 12:04:47 AM draw.Main logging
+INFO: Generation: 22. Best Fitness: 843506.0.
+Apr 15, 2018 12:04:47 AM draw.Main logging
+INFO: Generation: 23. Best Fitness: 834810.0.
+Apr 15, 2018 12:04:47 AM draw.Main logging
+INFO: Generation: 24. Best Fitness: 834810.0.
+Apr 15, 2018 12:04:48 AM draw.Main logging
+INFO: Generation: 25. Best Fitness: 829975.0.
+Apr 15, 2018 12:04:48 AM draw.Main logging
+INFO: Generation: 26. Best Fitness: 827409.0.
+Apr 15, 2018 12:04:48 AM draw.Main logging
+INFO: Generation: 27. Best Fitness: 804084.0.
+Apr 15, 2018 12:04:48 AM draw.Main logging
+INFO: Generation: 28. Best Fitness: 803426.0.
+Apr 15, 2018 12:04:49 AM draw.Main logging
+INFO: Generation: 29. Best Fitness: 803426.0.
+Apr 15, 2018 12:04:49 AM draw.Main logging
+INFO: Generation: 30. Best Fitness: 803426.0.
+Apr 15, 2018 12:04:49 AM draw.Main logging
+INFO: Generation: 31. Best Fitness: 803426.0.
+Apr 15, 2018 12:04:49 AM draw.Main logging
+INFO: Generation: 32. Best Fitness: 803426.0.
+Apr 15, 2018 12:04:50 AM draw.Main logging
+INFO: Generation: 33. Best Fitness: 803426.0.
+Apr 15, 2018 12:04:50 AM draw.Main logging
+INFO: Generation: 34. Best Fitness: 803426.0.
+Apr 15, 2018 12:04:50 AM draw.Main logging
+INFO: Generation: 35. Best Fitness: 803426.0.
+Apr 15, 2018 12:04:50 AM draw.Main logging
+INFO: Generation: 36. Best Fitness: 802150.0.
+Apr 15, 2018 12:04:50 AM draw.Main logging
+INFO: Generation: 37. Best Fitness: 802150.0.
+Apr 15, 2018 12:04:51 AM draw.Main logging
+INFO: Generation: 38. Best Fitness: 802150.0.
+Apr 15, 2018 12:04:51 AM draw.Main logging
+INFO: Generation: 39. Best Fitness: 802150.0.
+Apr 15, 2018 12:04:51 AM draw.Main logging
+INFO: Generation: 40. Best Fitness: 802105.0.
+Apr 15, 2018 12:04:51 AM draw.Main logging
+INFO: Generation: 41. Best Fitness: 801543.0.
+Apr 15, 2018 12:04:51 AM draw.Main logging
+INFO: Generation: 42. Best Fitness: 801543.0.
+Apr 15, 2018 12:04:52 AM draw.Main logging
+INFO: Generation: 43. Best Fitness: 801543.0.
